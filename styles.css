@@ -1,11 +1,7 @@
-/* Full stylesheet (replace existing styles.css)
-   - restores VAST home hero layout, transparent header overlay
-   - centers nav, small cart icon, no "create mission" button present in header
-   - dark form inputs, responsive shop layout, product grid
-   - hides modal when aria-hidden="true" so no random "Watch full video" appears
-*/
+/* styles.css — small updates: mini-cart styling, shop control spacing, no-products message */
+/* Keep the rest of your existing rules unchanged — this file contains the full file used by the site. */
 
-/* Tokens */
+/* design tokens */
 :root{
   --bg:#0b0b0b;
   --white:#ffffff;
@@ -16,51 +12,72 @@
   font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
 }
 
-/* Reset */
+/* reset */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--white);-webkit-font-smoothing:antialiased}
 
-/* Container */
+/* container */
 .container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
 
-/* Skip link hidden unless focused */
-.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-.skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 12px;background:#fff;color:#000;z-index:99999;border-radius:4px}
-
-/* Header */
+/* header (transparent overlay) */
 .site-header{position:absolute;left:0;right:0;top:0;z-index:60;padding:18px 0;background:transparent}
 .site-header__inner{max-width:var(--container);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;gap:20px}
-.logo img{height:28px;filter:brightness(1) invert(1);display:block}
+.logo img{height:28px;display:block;filter:brightness(1) invert(1)}
 .main-nav{flex:1;display:flex;justify-content:center}
 .main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:36px;align-items:center}
 .main-nav a{color:var(--white);text-decoration:none;padding:6px 8px;opacity:0.95}
 .main-nav a.active{font-weight:700;border-bottom:2px solid rgba(255,255,255,0.06);padding-bottom:6px}
 .header-actions{margin-left:auto;display:flex;align-items:center;gap:12px}
 
-/* Cart icon button */
+/* cart toggle */
 .cart-toggle{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;background:rgba(0,0,0,0.35);border:none;color:var(--white);cursor:pointer}
 .cart-toggle .cart-icon{stroke:#fff}
 .cart-toggle #cartCount{font-weight:700;padding-left:6px}
 
-/* Mini-cart */
-.mini-cart{position:fixed;top:72px;right:26px;width:360px;max-height:72vh;overflow:auto;background:linear-gradient(180deg, rgba(10,10,10,0.98), rgba(6,6,6,0.98));border-radius:10px;padding:16px;box-shadow:0 18px 40px rgba(0,0,0,0.6);transition:opacity .18s,transform .18s;transform-origin:top right;opacity:0;transform:translateY(-8px) scale(.98);pointer-events:none}
+/* MINI-CART styling improvements */
+.mini-cart{
+  position:fixed;
+  top:72px;
+  right:26px;
+  width:340px;
+  max-height:72vh;
+  overflow:auto;
+  background:linear-gradient(180deg, rgba(10,10,10,0.98), rgba(6,6,6,0.98));
+  border-radius:12px;
+  padding:16px;
+  box-shadow:0 18px 40px rgba(0,0,0,0.6);
+  transition:opacity .18s ease, transform .18s ease;
+  transform-origin:top right;
+  opacity:0;
+  transform:translateY(-8px) scale(.98);
+  pointer-events:none;
+}
 .mini-cart[aria-hidden="false"]{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
-.mini-cart__items{display:flex;flex-direction:column;gap:12px;margin-bottom:12px}
+.mini-cart h4{margin:0 0 12px 0;font-size:18px}
+.mini-cart__items{max-height:260px;overflow:auto;display:flex;flex-direction:column;gap:12px;margin-bottom:12px}
+.mini-item{display:flex;gap:10px;align-items:center}
+.mini-item img{width:64px;height:64px;object-fit:cover;border-radius:8px}
+.mini-cart__footer{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.mini-cart__total{font-weight:700}
 
-/* Hero */
-.hero{position:relative;height:88vh;min-height:560px;overflow:hidden}
+/* Ensure all anchors inside mini-cart look like normal text / buttons not default blue links */
+.mini-cart a{color:var(--white);text-decoration:none}
+.mini-cart .mini-cart__actions a{display:inline-block;margin-left:8px}
+.mini-cart .mini-cart__actions a.btn{display:inline-flex;align-items:center;gap:8px}
+
+/* HERO (full-screen) */
+.hero{position:relative;height:100vh;min-height:560px;overflow:hidden}
 .hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg, rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.14) 36%, rgba(0,0,0,0.45) 100%);pointer-events:none}
 .hero__content{position:absolute;left:var(--gutter);bottom:64px;z-index:8;max-width:680px;pointer-events:none}
 .hero__title{pointer-events:auto;margin:0;color:var(--white);font-weight:900;line-height:0.92;letter-spacing:-0.02em;display:block;font-size:clamp(48px,9.5vw,120px);margin-bottom:18px;max-width:680px}
 .hero__title span{display:block}
 .hero__ctas{pointer-events:auto;display:flex;gap:12px;align-items:center}
-/* Hero buttons */
 .hero-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;background:rgba(0,0,0,0.6);color:var(--white);border:none;cursor:pointer}
 .hero-btn--primary{background:rgba(255,255,255,0.12)}
 
-/* Modal: hide by default when aria-hidden=true */
+/* Modal hide if aria-hidden true */
 .modal[aria-hidden="true"]{display:none}
 .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9998}
 .modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.8)}
@@ -68,24 +85,27 @@ body{margin:0;background:var(--bg);color:var(--white);-webkit-font-smoothing:ant
 .modal__body{padding:0;display:flex;align-items:center;justify-content:center;background:#000}
 .modal__video{width:100%;height:calc(60vh);max-height:64vh;background:#000}
 
-/* Page container */
+/* Pages / Shop */
 .page{max-width:var(--container);margin:36px auto;padding:0 var(--gutter) 96px}
 .section{padding:48px 0}
+.section--products{padding-top:24px}
 
-/* Shop controls and grid */
-.shop-controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:12px}
+/* Shop controls */
+.shop-controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:18px}
 .shop-controls label{display:flex;align-items:center;gap:8px;color:var(--white);font-weight:600}
-.shop-controls input[type="search"], .shop-controls select{padding:8px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);color:var(--white)}
-.popular-heading{font-weight:800;font-size:20px;margin-top:12px;margin-bottom:16px}
+.shop-controls input[type="search"]{min-width:260px;max-width:420px;padding:8px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);color:var(--white)}
+.shop-controls select{padding:8px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);color:var(--white)}
+
+/* No-products message (non-intrusive) */
+.no-products{padding:28px 16px;color:rgba(255,255,255,0.7);background:transparent;border-radius:8px}
+
+/* product cards */
 .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
 .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;min-height:260px;transition:transform .18s,box-shadow .18s}
 .card img{width:100%;height:160px;object-fit:cover;border-radius:10px}
-.card h3{margin:0;font-size:16px}
-.card .price{font-weight:700}
 
 /* Forms */
 .mission-form{max-width:720px;display:flex;flex-direction:column;gap:12px}
-.mission-form label{display:flex;flex-direction:column;gap:6px;font-weight:700}
 .mission-form input,.mission-form textarea{padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--white);width:100%}
 .mission-form textarea{min-height:160px;resize:vertical}
 
@@ -93,7 +113,7 @@ body{margin:0;background:var(--bg);color:var(--white);-webkit-font-smoothing:ant
 .site-footer{padding:46px 0}
 .site-footer .container{display:flex;justify-content:center;align-items:center}
 
-/* Responsive */
+/* responsive tweaks */
 @media (max-width:920px){
   .hero__content{left:24px;bottom:46px;max-width:520px}
   .hero__title{font-size:clamp(40px,11vw,84px)}
@@ -104,4 +124,52 @@ body{margin:0;background:var(--bg);color:var(--white);-webkit-font-smoothing:ant
   .hero__content{left:16px;bottom:28px;max-width:320px}
   .hero__title{font-size:clamp(34px,14vw,56px)}
   .mini-cart{right:12px;left:auto;width:calc(100% - 24px)}
+}
+
+/* Merge these cart/checkout-specific styles into your existing styles.css.
+   These rules are scoped to .cart-page and .checkout-page to avoid affecting other pages.
+   (If you already replaced styles.css earlier, you can append the block below.) */
+
+/* CART specific */
+.cart-page .cart-layout{display:flex;gap:32px;margin-top:18px;align-items:flex-start}
+.cart-page .cart-items{flex:1}
+.cart-page .cart-items__list{display:flex;flex-direction:column;gap:14px}
+.cart-item{display:flex;gap:12px;align-items:center;border-radius:10px;padding:10px;background:rgba(255,255,255,0.02)}
+.cart-item img{width:96px;height:96px;object-fit:cover;border-radius:8px}
+.cart-item .meta{flex:1}
+.cart-item .meta h3{margin:0 0 6px;font-size:16px}
+.cart-item .meta p{margin:0;color:rgba(255,255,255,0.6);font-size:13px}
+.cart-item .qty{display:flex;align-items:center;gap:8px}
+.cart-item .remove{background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer}
+
+/* SUMMARY */
+.cart-summary{width:340px}
+.summary-box{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:10px}
+.summary-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+.summary-row.summary-total{font-size:1.1rem;padding-top:12px;border-bottom:none}
+.summary-actions{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.summary-actions .btn{width:100%}
+
+/* Checkout specific */
+.checkout-form .checkout-grid{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
+.checkout-form .field-block{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:10px}
+.checkout-form legend{font-weight:700;margin-bottom:8px}
+.checkout-form label{display:block;margin-bottom:10px;font-weight:600}
+.checkout-form .form-row{display:flex;gap:10px}
+.checkout-form .form-row label{flex:1}
+
+.order-summary.compact{margin-top:10px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.03)}
+.order-summary .summary-row{display:flex;justify-content:space-between;padding:6px 0;color:rgba(255,255,255,0.95)}
+.order-summary .total{font-weight:800}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;font-weight:700;color:var(--white);cursor:pointer;border:none}
+.btn--ghost{background:rgba(255,255,255,0.03)}
+.btn--primary{background:rgba(255,255,255,0.14)}
+
+/* Responsive */
+@media (max-width:920px){
+  .cart-page .cart-layout{flex-direction:column}
+  .checkout-form .checkout-grid{grid-template-columns:1fr}
+  .cart-summary{width:100%}
 }

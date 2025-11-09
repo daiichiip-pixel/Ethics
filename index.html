@@ -51,9 +51,9 @@
     </aside>
   </header>
 
-  <!-- Hero (VAST look: transparent header overlay, big stacked title bottom-left) -->
+  <!-- HERO: now fills the full viewport so no black gap appears below -->
   <div class="hero" id="hero">
-    <video id="heroVideo" class="hero__video" autoplay muted loop playsinline poster="hero-poster.jpg" preload="metadata" aria-label="Hero video">
+    <video id="heroVideo" class="hero__video" autoplay muted loop playsinline poster="hero-poster.jpg" preload="metadata" aria-label="Background video">
       <source src="hero.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -61,10 +61,11 @@
     <div class="hero__overlay" aria-hidden="true"></div>
 
     <main id="main" class="hero__content" role="main" aria-labelledby="heroTitle">
+      <!-- Changed text to "Connect to the others" as requested; stacked for VAST look -->
       <h1 id="heroTitle" class="hero__title">
-        <span>Building</span>
-        <span>next‑generation</span>
-        <span>space stations</span>
+        <span>Connect</span>
+        <span>to the</span>
+        <span>others</span>
       </h1>
 
       <div class="hero__ctas" role="group" aria-label="hero actions">
@@ -81,7 +82,7 @@
     <button id="autoplayFallback" class="autoplay-fallback" hidden aria-label="Play background video">▶</button>
   </div>
 
-  <!-- Featured products (populated by products.js -> script.js) -->
+  <!-- Featured area: productGrid will be populated from products.js by script.js -->
   <section class="section section--products">
     <div class="container">
       <h2>Featured</h2>
@@ -93,7 +94,7 @@
     <div class="container">VAST — Performance apparel and gear.</div>
   </footer>
 
-  <!-- modal (hidden by default with CSS) -->
+  <!-- Modal (hidden by CSS when aria-hidden="true") -->
   <div id="videoModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle" tabindex="-1">
     <div class="modal__backdrop" data-action="close"></div>
     <div class="modal__panel" role="document">
@@ -107,7 +108,7 @@
     </div>
   </div>
 
-  <!-- load product data first, then behavior -->
+  <!-- product data first, then behavior -->
   <script src="products.js"></script>
   <script src="script.js"></script>
 </body>
