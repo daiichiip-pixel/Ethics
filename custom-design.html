@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Custom Design — VAST</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- header -->
+  <header class="site-header" role="banner" aria-label="Site header">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <div class="site-header__inner container">
+      <a class="logo" href="index.html"><img src="images/logo.svg" alt="VAST" /></a>
+      <nav class="main-nav" role="navigation" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="custom-design.html">Custom Design</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button id="cartToggle" class="cart-toggle" aria-label="Open cart">
+          <svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1.5"></circle>
+            <circle cx="20" cy="21" r="1.5"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h8.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span id="cartCount" aria-hidden="true">0</span>
+        </button>
+      </div>
+    </div>
+
+    <aside id="miniCart" class="mini-cart" aria-hidden="true" aria-label="Shopping cart">
+      <h4>Cart</h4>
+      <div id="miniCartItems" class="mini-cart__items"></div>
+      <div class="mini-cart__footer">
+        <div class="mini-cart__total">Total: <span id="miniCartTotal">$0.00</span></div>
+        <div class="mini-cart__actions">
+          <a href="cart.html" class="btn btn--ghost">View cart</a>
+          <a href="checkout.html" class="btn btn--primary">Checkout</a>
+        </div>
+      </div>
+    </aside>
+  </header>
+
+  <main id="main" class="page">
+    <div class="container">
+      <div class="page-nav" style="margin-bottom:22px">
+        <a href="index.html" class="btn btn--ghost">← Home</a>
+        <a href="shop.html" class="btn btn--ghost">View Shop</a>
+      </div>
+
+      <h1>Custom Design</h1>
+      <p>Tell us about your custom idea — we'll review and reply.</p>
+
+      <form id="customDesignForm" class="mission-form" novalidate>
+        <label>Your name
+          <input id="cdName" name="name" required />
+        </label>
+
+        <label>Email
+          <input id="cdEmail" name="email" type="email" required />
+        </label>
+
+        <label>Product idea
+          <input id="cdTitle" name="title" required />
+        </label>
+
+        <label>Details
+          <textarea id="cdDetails" name="details" rows="6" required></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">Submit design</button>
+        </div>
+
+        <div id="customMessage" aria-live="polite"></div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container">VAST — Performance apparel and gear.</div></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

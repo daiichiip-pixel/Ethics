@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Checkout — VAST</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" role="banner"> ... </header>
+
+  <main id="main" class="page" role="main">
+    <div class="container">
+      <h1>Checkout</h1>
+      <form id="checkoutForm" class="checkout-form" novalidate>
+        <fieldset>
+          <legend>Shipping</legend>
+          <label>Full name <input id="shipName" name="name" required></label>
+          <label>Address <input id="shipAddress" name="address" required></label>
+          <label>City <input id="shipCity" name="city" required></label>
+          <label>Postal code <input id="shipPostal" name="postal" required></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Payment</legend>
+          <label>Card number <input id="cardNumber" name="card" required></label>
+          <label>Expiry <input id="cardExpiry" name="expiry" required></label>
+          <label>CVC <input id="cardCvc" name="cvc" required></label>
+        </fieldset>
+
+        <div class="checkout-actions">
+          <button type="submit" class="btn btn--primary">Place order</button>
+        </div>
+
+        <div id="checkoutMessage" class="form-message" aria-live="polite"></div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container"><p>VAST — Performance apparel and gear.</p></div></footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

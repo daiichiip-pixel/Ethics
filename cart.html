@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cart — VAST</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" role="banner"> ... <!-- same header markup as other pages (omitted for brevity) --> </header>
+
+  <main id="main" class="page" role="main">
+    <div class="container">
+      <h1>Your cart</h1>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-summary">
+        <div>Subtotal: <span id="cartSubtotal">$0.00</span></div>
+        <div>Shipping: <span id="cartShipping">$0.00</span></div>
+        <div>Total: <strong id="cartTotal">$0.00</strong></div>
+        <div class="cart-actions">
+          <a href="shop.html" class="btn btn--ghost">Continue shopping</a>
+          <a id="proceedCheckout" href="checkout.html" class="btn btn--primary">Proceed to checkout</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container"><p>VAST — Performance apparel and gear.</p></div></footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
